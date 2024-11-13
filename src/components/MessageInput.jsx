@@ -3,10 +3,10 @@ import { SocketContext } from "../contexts/SocketContext";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
-  const socket = useContext(SocketContext);
+  const { socket, username } = useContext(SocketContext);
 
   const sendMessage = () => {
-    socket.emit("chatMessage", { username: "User", message });
+    socket.emit("chatMessage", { username, message });
     setMessage("");
   };
 

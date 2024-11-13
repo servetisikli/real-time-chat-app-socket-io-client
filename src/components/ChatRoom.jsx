@@ -1,18 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { SocketContext } from "../contexts/SocketContext";
 import MessageInput from "./MessageInput";
 
 const ChatRoom = () => {
-  const [messages, setMessages] = useState([]);
-  const socket = useContext(SocketContext);
-
-  useEffect(() => {
-    if (socket) {
-      socket.on("chatMessage", (msg) => {
-        setMessages((prevMessages) => [...prevMessages, msg]);
-      });
-    }
-  }, [socket]);
+  const { messages } = useContext(SocketContext);
 
   return (
     <div>
